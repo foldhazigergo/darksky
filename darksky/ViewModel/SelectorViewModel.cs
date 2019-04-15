@@ -1,5 +1,7 @@
 ﻿using darksky.BackendService;
 using darksky.Model;
+using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +12,7 @@ using System.Windows.Controls;
 
 namespace darksky.ViewModel
 {
-    public class SelectorViewModel : INotifyPropertyChanged
+    public class SelectorViewModel : ViewModelBase
     {
         private Location _SelectedLocation;
         public Location SelectedLocation
@@ -19,7 +21,8 @@ namespace darksky.ViewModel
             set
             {
                 _SelectedLocation = value;
-                OnPropertyChanged("SelectedLocation");
+                GetWeatherForLocationAsync(SelectedLocation);
+                RaisePropertyChanged("SelectedLocation");
             }
         }
 
@@ -44,20 +47,12 @@ namespace darksky.ViewModel
 
             SelectedLocation = new Location();
             SelectedLocation = Locations[0];
-
-            GetWeatherForLocationAsync(Locations[0]);
         }
 
         private async void GetWeatherForLocationAsync(Location loc)
         {
-            var budapestWeather = await new DarkSky().GetWeather(loc);
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged(string property)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
+            Weather weather = await DarkSky.Instance.GetWeather(loc);
+            MessengerInstance.Send<GenericMessage<Weather>>(new GenericMessage<Weather>(weather));
         }
     }
 }

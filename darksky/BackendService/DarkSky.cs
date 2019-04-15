@@ -13,24 +13,36 @@ namespace darksky.BackendService
 {
     public class DarkSky
     {
+        private static DarkSky instance;
+
+        private DarkSky() { }
+
+        public static DarkSky Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new DarkSky();
+                    instance.client = new HttpClient();
+                    instance.client.DefaultRequestHeaders.Accept.Clear();
+                    instance.client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                }
+                return instance;
+            }
+        }
+
         // dark sky api key: f1be72a5165735c754a9cbf6bbd205a7
         // must supply in all api calls
         // example call 
         // GET https://api.darksky.net/forecast/f1be72a5165735c754a9cbf6bbd205a7/37.8267,-122.423
+        private const string API_KEY = "f1be72a5165735c754a9cbf6bbd205a7";
 
         private HttpClient client;
 
-        public DarkSky()
-        {
-            client = new HttpClient();
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        }
-
         public async Task<Weather> GetWeather(Location loc)
         {
-            //TODO: parse LatLng coordinates from loc here
-            var url = "https://api.darksky.net/forecast/f1be72a5165735c754a9cbf6bbd205a7/47.4813602,18.9902207?exclude=[minutely,hourly,daily,alerts,flags]";
+            string url = "https://api.darksky.net/forecast/" + API_KEY + "/" + loc.Latitude + "," + loc.Longitude + "?exclude=[minutely,hourly,daily,alerts,flags]";
             Weather weather = await Get<Weather>(url);
           
             return weather;
@@ -55,14 +67,16 @@ namespace darksky.BackendService
                 var response = await client.GetAsync(uri);
                 if (response.IsSuccessStatusCode)
                 {
-                    var data = await response.Content.ReadAsStringAsync();
-                    Debug.WriteLine("------- RES: " + data);
+                    string data = await response.Content.ReadAsStringAsync();
+                    Debug.WriteLine("------- RESPONSE: " + data);
                     var deserializedData = await Task.Factory.StartNew(() => JsonConvert.DeserializeObject<T>(data));
 
                     return deserializedData;
                 }
                 else
+                {
                     return default(T);
+                }
             }
             catch (Exception ex)
             {

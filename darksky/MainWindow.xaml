@@ -6,9 +6,19 @@
         xmlns:local="clr-namespace:darksky"
         xmlns:v="clr-namespace:darksky.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="900">
 
-    <Grid>
-        <v:SelectorView />
-    </Grid>
+    <StackPanel Margin="10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+
+            <v:SelectorView Grid.Row="0"/>
+            <v:WeatherView  Grid.Row="1"/>
+            <TextBlock Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Text="FORECAST"/>
+        </Grid>
+    </StackPanel>
 </Window>

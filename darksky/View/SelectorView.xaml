@@ -10,25 +10,27 @@
     <UserControl.DataContext>
         <vm:SelectorViewModel/>
     </UserControl.DataContext>
-    <StackPanel Margin="10">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <ComboBox 
-                Grid.Row="0"
-                ItemsSource="{Binding Locations}"
-                Name="LocationSelector"
-                SelectedIndex="0"
-                SelectedValue="{Binding SelectedLocation, Mode=TwoWay}">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock FontSize="18" Text="{Binding CityName}" />
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>
-            <TextBlock Grid.Row="1" Text="{Binding SelectedLocation.CityName}" />
-        </Grid>
-    </StackPanel>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ComboBox 
+            Grid.Row="0"
+            Grid.Column="1"
+            ItemsSource="{Binding Locations}"
+            Name="LocationSelector"
+            SelectedIndex="0"
+            SelectedValue="{Binding SelectedLocation, Mode=TwoWay}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock FontSize="18" Text="{Binding CityName}" />
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+    </Grid>
 </UserControl>
