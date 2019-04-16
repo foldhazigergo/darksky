@@ -4,13 +4,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:darksky.View"
+             xmlns:converters="clr-namespace:darksky.Converters"
              xmlns:vm="clr-namespace:darksky.ViewModel"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="500" d:DesignWidth="800">
+    <UserControl.Resources>
+        <converters:TemperatureToStringConverter x:Key="TemperatureToStringConverter" />
+        <converters:ApparentTemperatureToStringConverter x:Key="ApparentTemperatureToStringConverter" />
+        <converters:HumidityToStringConverter x:Key="HumidityToStringConverter" />
+    </UserControl.Resources>
     <UserControl.DataContext>
         <vm:WeatherViewModel/>
     </UserControl.DataContext>
-    <Grid HorizontalAlignment="Center">
+    <Grid HorizontalAlignment="Center" Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="12"/>
@@ -28,13 +34,14 @@
              Grid.ColumnSpan="3"
              Width="80" 
              Height="80" 
+             Margin="0,0,0,10"
              Source="{Binding ImagePath}" />
-        <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Temperature}" />
-        <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding ApparentTemperature}" />
-        <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding AtmosphericPressure}" />
-        <TextBlock Grid.Row="2" Grid.Column="2" Text="{Binding WindSpeed}" />
-        <TextBlock Grid.Row="3" Grid.Column="0" Text="{Binding Humidity}" />
-        <TextBlock Grid.Row="3" Grid.Column="2" Text="{Binding UVIndex}" />
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Temperature, Converter={StaticResource TemperatureToStringConverter}}" HorizontalAlignment="Center" />
+        <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding ApparentTemperature, Converter={StaticResource ApparentTemperatureToStringConverter}}" HorizontalAlignment="Center"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding AtmosphericPressure}" HorizontalAlignment="Center"/>
+        <TextBlock Grid.Row="2" Grid.Column="2" Text="{Binding WindSpeed}" HorizontalAlignment="Center"/>
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="{Binding Humidity, Converter={StaticResource HumidityToStringConverter}}" HorizontalAlignment="Center"/>
+        <TextBlock Grid.Row="3" Grid.Column="2" Text="{Binding UVIndex}" HorizontalAlignment="Center"/>
         <Rectangle Grid.Row="1" Grid.RowSpan="3" Grid.Column="1" Fill="White" />
     </Grid>
 </UserControl>

@@ -32,17 +32,13 @@ namespace darksky.BackendService
             }
         }
 
-        // dark sky api key: f1be72a5165735c754a9cbf6bbd205a7
-        // must supply in all api calls
-        // example call 
-        // GET https://api.darksky.net/forecast/f1be72a5165735c754a9cbf6bbd205a7/37.8267,-122.423
         private const string API_KEY = "f1be72a5165735c754a9cbf6bbd205a7";
 
         private HttpClient client;
 
         public async Task<Weather> GetWeather(Location loc)
         {
-            string url = "https://api.darksky.net/forecast/" + API_KEY + "/" + loc.Latitude + "," + loc.Longitude + "?exclude=[minutely,hourly,daily,alerts,flags]";
+            string url = "https://api.darksky.net/forecast/" + API_KEY + "/" + loc.Latitude + "," + loc.Longitude + "?units=si&exclude=[minutely,hourly,alerts,flags]";
             Weather weather = await Get<Weather>(url);
           
             return weather;

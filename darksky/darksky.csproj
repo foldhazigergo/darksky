@@ -75,13 +75,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\ApparentTemperatureToStringConverter.cs" />
+    <Compile Include="Converters\HumidityToStringConverter.cs" />
+    <Compile Include="Converters\PressureToStringConverter.cs" />
+    <Compile Include="Converters\TemperatureToStringConverter.cs" />
+    <Compile Include="Converters\UVIndexToStringConverter.cs" />
+    <Compile Include="Converters\WindSpeedToStringConverter.cs" />
+    <Compile Include="ImageHandler.cs" />
     <Compile Include="Model\Currently.cs" />
+    <Compile Include="Model\Daily.cs" />
+    <Compile Include="Model\Datum.cs" />
     <Compile Include="Model\Location.cs" />
     <Compile Include="Model\Weather.cs" />
+    <Compile Include="ViewModel\ForecastWeatherViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\SelectorViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="ViewModel\WeatherViewModel.cs" />
+    <Compile Include="View\ForecastWeatherView.xaml.cs">
+      <DependentUpon>ForecastWeatherView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\SelectorView.xaml.cs">
       <DependentUpon>SelectorView.xaml</DependentUpon>
     </Compile>
@@ -101,6 +114,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\ForecastWeatherView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\SelectorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

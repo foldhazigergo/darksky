@@ -12,5 +12,6 @@ namespace darksky.Model
         public string longitude;
         public string timezone;
         public Currently currently;
+        public Daily daily;
     }
 }

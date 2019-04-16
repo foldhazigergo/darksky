@@ -21,7 +21,7 @@ namespace darksky.ViewModel
             set
             {
                 _SelectedLocation = value;
-                GetWeatherForLocationAsync(SelectedLocation);
+                GetWeatherForLocationAsync(_SelectedLocation);
                 RaisePropertyChanged("SelectedLocation");
             }
         }
