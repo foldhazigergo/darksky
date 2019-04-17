@@ -13,6 +13,7 @@ namespace darksky.ViewModel
 {
     public class WeatherViewModel : ViewModelBase
     {
+#region Properties
         private string _ImagePath;
         public string ImagePath
         {
@@ -89,14 +90,15 @@ namespace darksky.ViewModel
                 RaisePropertyChanged("UVIndex");
             }
         }
+#endregion
 
         public WeatherViewModel()
         {
             ImagePath = "../Images/DefaultImage.png";
-            MessengerInstance.Register<GenericMessage<Weather>>(this, Notify);
+            MessengerInstance.Register<GenericMessage<Weather>>(this, WeatherInfoRecieved);
         }
 
-        public void Notify(GenericMessage<Weather> genericMessageWeather)
+        public void WeatherInfoRecieved(GenericMessage<Weather> genericMessageWeather)
         {
             Weather weather = genericMessageWeather.Content;
             if (weather == null || weather.currently == null)

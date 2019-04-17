@@ -8,9 +8,6 @@ namespace darksky.Model
 {
     public class Weather
     {
-        public string latitude;
-        public string longitude;
-        public string timezone;
         public Currently currently;
         public Daily daily;
     }

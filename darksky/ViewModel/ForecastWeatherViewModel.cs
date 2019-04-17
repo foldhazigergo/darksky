@@ -35,18 +35,19 @@ namespace darksky.ViewModel
             DaysOfWeek.Clear();
             for(int i=0; i<7; i++)
             {
+                var dayInfo = weather.daily.Data[i];
                 DaysOfWeek.Add(new Datum()
                 {
-                    ImagePath = ImageHandler.Instance.GetImagePathForecast(weather.daily.Data[i].Icon),
-                    Time = weather.daily.Data[i].Time,
-                    TemperatureMin = weather.daily.Data[i].TemperatureMin,
-                    TemperatureMax = weather.daily.Data[i].TemperatureMax,
-                    ApparentTemperatureMin = weather.daily.Data[i].ApparentTemperatureMin,
-                    ApparentTemperatureMax = weather.daily.Data[i].ApparentTemperatureMax,
-                    Humidity = weather.daily.Data[i].Humidity,
-                    Pressure = weather.daily.Data[i].Pressure,
-                    WindSpeed = weather.daily.Data[i].WindSpeed,
-                    UVIndex = weather.daily.Data[i].UVIndex
+                    ImagePath = ImageHandler.Instance.GetImagePathForecast(dayInfo.Icon),
+                    Time = dayInfo.Time,
+                    TemperatureMin = dayInfo.TemperatureMin,
+                    TemperatureMax = dayInfo.TemperatureMax,
+                    ApparentTemperatureMin = dayInfo.ApparentTemperatureMin,
+                    ApparentTemperatureMax = dayInfo.ApparentTemperatureMax,
+                    Humidity = dayInfo.Humidity,
+                    Pressure = dayInfo.Pressure,
+                    WindSpeed = dayInfo.WindSpeed,
+                    UVIndex = dayInfo.UVIndex
                 });
             }
         }

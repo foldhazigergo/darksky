@@ -17,9 +17,8 @@ namespace darksky
             get
             {
                 if (instance == null)
-                {
                     instance = new ImageHandler();
-                }
+
                 return instance;
             }
         }

@@ -46,6 +46,8 @@ namespace darksky.ViewModel
             Locations.Add(new Location("Amsterdam", "52.3547322", "4.8285837"));
 
             SelectedLocation = new Location();
+
+            //Set a location to start with in order to trigger backend calls and update the UI when the app starts
             SelectedLocation = Locations[0];
         }
 
