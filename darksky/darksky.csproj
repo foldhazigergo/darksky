@@ -75,10 +75,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\ApparentTemperatureMinMaxToStringConverter.cs" />
     <Compile Include="Converters\ApparentTemperatureToStringConverter.cs" />
     <Compile Include="Converters\HumidityToStringConverter.cs" />
     <Compile Include="Converters\PressureToStringConverter.cs" />
+    <Compile Include="Converters\TemperatureMinMaxToStringConverter.cs" />
     <Compile Include="Converters\TemperatureToStringConverter.cs" />
+    <Compile Include="Converters\TimeStampToDayNameConverter.cs" />
     <Compile Include="Converters\UVIndexToStringConverter.cs" />
     <Compile Include="Converters\WindSpeedToStringConverter.cs" />
     <Compile Include="ImageHandler.cs" />

@@ -10,6 +10,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="800">
     <UserControl.Resources>
+        <converters:TimeStampToDayNameConverter x:Key="TimeStampToDayNameConverter" />
+        <converters:TemperatureMinMaxToStringConverter x:Key="TemperatureMinMaxToStringConverter" />
+        <converters:ApparentTemperatureMinMaxToStringConverter x:Key="ApparentTemperatureMinMaxToStringConverter" />
         <converters:PressureToStringConverter x:Key="PressureToStringConverter" />
         <converters:WindSpeedToStringConverter x:Key="WindSpeedToStringConverter" />
         <converters:HumidityToStringConverter x:Key="HumidityToStringConverter" />
@@ -28,13 +31,13 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Vertical" Margin="10">
-                            <TextBlock FontSize="18" Text="{Binding DayName}" HorizontalAlignment="Left" />
+                            <TextBlock FontSize="18" Text="{Binding Time, Converter={StaticResource TimeStampToDayNameConverter}}" HorizontalAlignment="Left" />
                             <Image Width="80" 
                                    Height="80" 
                                    Margin="0,0,0,10"
                                    Source="{Binding ImagePath}" />
-                            <TextBlock Text="{Binding Temperature}" HorizontalAlignment="Left" />
-                            <TextBlock Text="{Binding ApparentTemperature}" HorizontalAlignment="Left"/>
+                            <TextBlock Text="{Binding Converter={StaticResource TemperatureMinMaxToStringConverter}}" HorizontalAlignment="Left" />
+                            <TextBlock Text="{Binding Converter={StaticResource ApparentTemperatureMinMaxToStringConverter}}" HorizontalAlignment="Left"/>
                             <TextBlock Text="{Binding Pressure, Converter={StaticResource PressureToStringConverter}}" HorizontalAlignment="Left" />
                             <TextBlock Text="{Binding WindSpeed, Converter={StaticResource WindSpeedToStringConverter}}" HorizontalAlignment="Left"/>
                             <TextBlock Text="{Binding Humidity, Converter={StaticResource HumidityToStringConverter}}" HorizontalAlignment="Left"/>

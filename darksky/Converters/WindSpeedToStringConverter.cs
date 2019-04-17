@@ -12,7 +12,10 @@ namespace darksky.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return "Wind Speed: " + value.ToString() + "m/s";
+            if (value == null)
+                return "Wind Speed: - m/s";
+
+            return "Wind Speed: " + value.ToString() + " m/s";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

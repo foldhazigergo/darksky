@@ -15,28 +15,12 @@ namespace darksky.Model
         public string Icon { get; set; }
         public double TemperatureMin { get; set; }
         public double TemperatureMax { get; set; }
-
-        public string Temperature
-        {
-            get
-            {
-                return TemperatureMin + " - " + TemperatureMax;
-            }
-        }
-        public string ApparentTemperatureMin { get; set; }
-        public string ApparentTemperatureMax { get; set; }
-        public string ApparentTemperature
-        {
-            get
-            {
-                return ApparentTemperatureMin + " - " + ApparentTemperatureMax;
-            }
-        }
-
-        public string Humidity { get; set; }
-        public string Pressure { get; set; }
-        public string WindSpeed { get; set; }
-        public string UvIndex { get; set; }
+        public double ApparentTemperatureMin { get; set; }
+        public double ApparentTemperatureMax { get; set; }
+        public double Humidity { get; set; }
+        public double Pressure { get; set; }
+        public double WindSpeed { get; set; }
+        public double UVIndex { get; set; }
 
         public Datum()
         {

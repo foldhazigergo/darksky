@@ -1,4 +1,5 @@
-﻿using System;
+﻿using darksky.Model;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -8,15 +9,14 @@ using System.Windows.Data;
 
 namespace darksky.Converters
 {
-    public class PressureToStringConverter : IValueConverter
+    public class TemperatureMinMaxToStringConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value == null)
-                return "Atmospheric Pressure: - %";
-
-            int intValue = (int)Math.Round((double)value);
-            return "Atmospheric Pressure: " + intValue.ToString() + " hPa";
+            var obj = value as Datum;
+            int minTemperature = (int)Math.Round(obj.TemperatureMin);
+            int maxTemperature = (int)Math.Round(obj.TemperatureMax);
+            return "Temperature: " + minTemperature.ToString() + " °C - " + maxTemperature.ToString() + " °C";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

@@ -24,8 +24,8 @@ namespace darksky.ViewModel
             }
         }
 
-        private string _Temperature;
-        public string Temperature
+        private double _Temperature;
+        public double Temperature
         {
             get { return _Temperature; }
             set
@@ -35,8 +35,8 @@ namespace darksky.ViewModel
             }
         }
 
-        private string _ApparentTemperature;
-        public string ApparentTemperature
+        private double _ApparentTemperature;
+        public double ApparentTemperature
         {
             get { return _ApparentTemperature; }
             set
@@ -46,8 +46,8 @@ namespace darksky.ViewModel
             }
         }
 
-        private string _AtmosphericPressure;
-        public string AtmosphericPressure
+        private double _AtmosphericPressure;
+        public double AtmosphericPressure
         {
             get { return _AtmosphericPressure; }
             set
@@ -57,8 +57,8 @@ namespace darksky.ViewModel
             }
         }
 
-        private string _WindSpeed;
-        public string WindSpeed
+        private double _WindSpeed;
+        public double WindSpeed
         {
             get { return _WindSpeed; }
             set
@@ -68,8 +68,8 @@ namespace darksky.ViewModel
             }
         }
 
-        private string _Humidity;
-        public string Humidity
+        private double _Humidity;
+        public double Humidity
         {
             get { return _Humidity; }
             set
@@ -79,8 +79,8 @@ namespace darksky.ViewModel
             }
         }
 
-        private string _UVIndex;
-        public string UVIndex
+        private double _UVIndex;
+        public double UVIndex
         {
             get { return _UVIndex; }
             set
@@ -93,12 +93,6 @@ namespace darksky.ViewModel
         public WeatherViewModel()
         {
             ImagePath = "../Images/DefaultImage.png";
-            Temperature = "";
-            ApparentTemperature = "";
-            AtmosphericPressure = "";
-            WindSpeed = "";
-            Humidity = "";
-            UVIndex = "";
             MessengerInstance.Register<GenericMessage<Weather>>(this, Notify);
         }
 

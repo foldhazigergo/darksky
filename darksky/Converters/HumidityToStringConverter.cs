@@ -12,12 +12,11 @@ namespace darksky.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value == null || value.ToString() == "")
+            if (value == null)
                 return "Humidity: - %";
 
-            string stringValue = value.ToString();
-            double percentValue = double.Parse(stringValue, CultureInfo.InvariantCulture) * 100;
-            return "Humidity: " + percentValue.ToString() + " %";
+            int intValue = (int)Math.Round((double)value * 100);
+            return "Humidity: " + intValue.ToString() + " %";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

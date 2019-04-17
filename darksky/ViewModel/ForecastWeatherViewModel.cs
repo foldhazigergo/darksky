@@ -38,7 +38,7 @@ namespace darksky.ViewModel
                 DaysOfWeek.Add(new Datum()
                 {
                     ImagePath = ImageHandler.Instance.GetImagePathForecast(weather.daily.Data[i].Icon),
-                    DayName = TimeStampToDayName(weather.daily.Data[i].Time),
+                    Time = weather.daily.Data[i].Time,
                     TemperatureMin = weather.daily.Data[i].TemperatureMin,
                     TemperatureMax = weather.daily.Data[i].TemperatureMax,
                     ApparentTemperatureMin = weather.daily.Data[i].ApparentTemperatureMin,
@@ -46,27 +46,11 @@ namespace darksky.ViewModel
                     Humidity = weather.daily.Data[i].Humidity,
                     Pressure = weather.daily.Data[i].Pressure,
                     WindSpeed = weather.daily.Data[i].WindSpeed,
-                    UvIndex = weather.daily.Data[i].UvIndex
+                    UVIndex = weather.daily.Data[i].UVIndex
                 });
             }
         }
 
-        //TODO: round celsius values to INT
-        // use IValueConverters in the VIEW XAML {Binding xxx, Converter=}
-        // use as static resource in xaml
-        // converters started, continue with min and max values
-
-        //TODO: use TODAY, TOMORROW and NOW
-
         //TODO: change UI language based on location
-
-        
-        private string TimeStampToDayName(double unixTimeStamp)
-        {
-            // Unix timestamp is seconds past epoch
-            System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
-            dtDateTime = dtDateTime.AddSeconds(unixTimeStamp).ToLocalTime();
-            return dtDateTime.ToString("dddd");
-        }
     }
 }
