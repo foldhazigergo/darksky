@@ -13,7 +13,7 @@ namespace darksky.ViewModel
 {
     public class WeatherViewModel : ViewModelBase
     {
-#region Properties
+        #region Properties
         private string _ImagePath;
         public string ImagePath
         {
@@ -90,7 +90,7 @@ namespace darksky.ViewModel
                 RaisePropertyChanged("UVIndex");
             }
         }
-#endregion
+        #endregion
 
         public WeatherViewModel()
         {

@@ -13,10 +13,10 @@ namespace darksky.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value == null)
-                return "Feels like: - °C";
+                return Properties.Resources.FeelsLike + ": - °C";
 
             int intValue = (int)Math.Round((double)value);
-            return "Feels like: " + intValue.ToString() + " °C";
+            return Properties.Resources.FeelsLike + ": " + intValue.ToString() + " °C";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

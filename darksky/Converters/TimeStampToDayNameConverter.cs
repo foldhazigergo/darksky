@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Resources;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Data;
 
@@ -18,12 +20,13 @@ namespace darksky.Converters
             string today = DateTime.Now.ToString("dddd");
             string tomorrow = DateTime.Now.AddDays(1).ToString("dddd");
 
+            
             if (string.Compare(today,timestamp.ToString("dddd")) == 0)
-                return "Today";
+                return Properties.Resources.Today;
             else if(string.Compare(tomorrow, timestamp.ToString("dddd")) == 0)
-                return "Tomorrow";
+                return Properties.Resources.Tomorrow;
             else
-                return timestamp.ToString("dddd");
+                return timestamp.ToString("dddd", Thread.CurrentThread.CurrentUICulture);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

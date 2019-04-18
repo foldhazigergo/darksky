@@ -13,10 +13,10 @@ namespace darksky.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value == null)
-                return "Atmospheric Pressure: - %";
+                return Properties.Resources.Pressure + ": - %";
 
             int intValue = (int)Math.Round((double)value);
-            return "Atmospheric Pressure: " + intValue.ToString() + " hPa";
+            return Properties.Resources.Pressure + ": " + intValue.ToString() + " hPa";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

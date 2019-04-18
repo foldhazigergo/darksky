@@ -16,7 +16,7 @@ namespace darksky.Converters
             var obj = value as Datum;
             int minTemperature = (int)Math.Round(obj.TemperatureMin);
             int maxTemperature = (int)Math.Round(obj.TemperatureMax);
-            return "Temperature: " + minTemperature.ToString() + " °C - " + maxTemperature.ToString() + " °C";
+            return Properties.Resources.Temperature + ": " + minTemperature.ToString() + " °C - " + maxTemperature.ToString() + " °C";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

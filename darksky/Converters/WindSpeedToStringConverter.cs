@@ -13,9 +13,9 @@ namespace darksky.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value == null)
-                return "Wind Speed: - m/s";
+                return Properties.Resources.WindSpeed + ": - m/s";
 
-            return "Wind Speed: " + value.ToString() + " m/s";
+            return Properties.Resources.WindSpeed + ": " + value.ToString() + " m/s";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
